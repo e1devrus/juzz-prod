@@ -1028,7 +1028,7 @@ $(document).ready(function () {
     var html = '';
 
     for (var i = 1; i <= doctor.certificates; i++) {
-      html += "\n                    <div class=\"certificate\">\n                        <img src=\"assets/img/certificates/".concat(doctor.name, "/ (").concat(i, ").jpg\" alt=\"\" class=\"certificate__img\">\n                    </div>\n                ");
+      html += "\n                    <div class=\"certificate\">\n                        <img src=\"assets/img/certificates/".concat(doctor.name, "/(").concat(i, ").jpg\" alt=\"\" class=\"certificate__img\">\n                    </div>\n                ");
     }
 
     return html;
