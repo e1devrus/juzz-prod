@@ -1052,19 +1052,35 @@ $(document).ready(function () {
   }
 
   var doctorsWrapper = document.querySelector('.slider__images.specs');
-  doctorsWrapper.innerHTML = doctorsHtml;
+
+  if (doctorsWrapper) {
+    doctorsWrapper.innerHTML = doctorsHtml;
+  }
+
   var mobileDoctorsHtml = doctors.reduce(function (acc, doctor) {
     return acc + generateMobileDoctorsHtml(doctor);
   }, '');
   var mobileDoctorsWrapper = document.querySelector('.slider-mobile__list');
-  mobileDoctorsWrapper.innerHTML = mobileDoctorsHtml + mobileDoctorsWrapper.innerHTML;
+
+  if (mobileDoctorsWrapper) {
+    mobileDoctorsWrapper.innerHTML = mobileDoctorsHtml + mobileDoctorsWrapper.innerHTML;
+  }
+
   var mobileDoctorsMainsHtml = doctors.reduce(function (acc, doctor) {
     return acc + generateMobileDoctorMainHtml(doctor);
   }, '');
   var mobileDoctorsMainsWrapper = document.querySelector('.slider-mobile__mains');
-  mobileDoctorsMainsWrapper.innerHTML = mobileDoctorsMainsHtml;
+
+  if (mobileDoctorsMainsWrapper) {
+    mobileDoctorsMainsWrapper.innerHTML = mobileDoctorsMainsHtml;
+  }
+
   var cert = document.querySelector('.certificates');
-  cert.innerHTML = generateCertificatesHtml(doctors[0]);
+
+  if (cert) {
+    cert.innerHTML = generateCertificatesHtml(doctors[0]);
+  }
+
   $('.nav__switch').click(function () {
     if ($(this).hasClass('fa-bars')) {
       $(this).removeClass('fa-bars');

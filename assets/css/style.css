@@ -4528,6 +4528,7 @@ h1 {
 @media (max-width: 950px) {
     .content {
         max-width: 518px !important;
+        width: 100vw;
         margin: 0 auto;
         padding: 10px 16px 40px;
         margin-top: 0;
