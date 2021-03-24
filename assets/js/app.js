@@ -1017,7 +1017,7 @@ $(document).ready(function () {
   };
 
   var generateMobileDoctorMainHtml = function generateMobileDoctorMainHtml(doctor) {
-    return "\n            <div class=\"slider__img-main-wrapper spec\">\n                <img src=\"".concat(doctor.image.replace('svg', 'jpg').replace('svg', 'jpg'), "\" alt=\"\" class=\"slider__img-main\">\n                <div class=\"slider__spec-description\">\n    \n                    ").concat(doctor.name.split(' ')[0], "<br>\n                    ").concat(doctor.name.split(' ')[1], "<br>\n                    ").concat(doctor.name.split(' ')[2], "<br>\n                    <span class=\"slider__doctor-speciality\">").concat(doctor.speciality, "</span>\n                    ").concat(doctor.certificates > 0 ? "\n                        <div class=\"certificate-wrapper\"><img src=\"assets/img/certificate.svg\" alt=\"\"\n                            class=\"certificate__img\">\n                        </div>\n                    " : '', "\n                \n                </div>\n            </div>\n        ");
+    return "\n            <div class=\"slider__img-main-wrapper spec\">\n                <img src=\"".concat(doctor.image.replace('svg', 'jpg').replace('svg', 'jpg'), "\" alt=\"\" class=\"slider__img-main\">\n                <div class=\"slider__spec-description\">\n    \n                    ").concat(doctor.name.split(' ')[0], "<br>\n                    ").concat(doctor.name.split(' ')[1], "<br>\n                    ").concat(doctor.name.split(' ')[2], "<br>\n                    <span class=\"slider__doctor-speciality\">").concat(doctor.speciality, "</span>\n                    ").concat(doctor.certificates > 0 ? "\n                        <div class=\"certificate-wrapper\" data-doctor=\"".concat(doctor.name, "\"><img src=\"assets/img/certificate.svg\" alt=\"\"\n                            class=\"certificate__img\">\n                        </div>\n                    ") : '', "\n                \n                </div>\n            </div>\n        ");
   };
 
   var generateSliderMainImgHtml = function generateSliderMainImgHtml(doctor) {
@@ -1103,11 +1103,11 @@ $(document).ready(function () {
       $('.certificates').html(generateCertificatesHtml(doctor));
       $('.certificates').css('display', 'block');
       $('.certificates-back-btn').css('display', 'block');
-      $('.footer').css('background-color', '#fff3e0');
+      $('.footer').css('display', 'none');
       $('.certificates__close').click(function () {
         $('.certificates').css('display', 'none');
         $('.certificates-back-btn').css('display', 'none');
-        $('.footer').css('background-color', '#3b241a');
+        $('.footer').css('display', 'block');
       });
     });
   });
@@ -1119,6 +1119,22 @@ $(document).ready(function () {
       return doctor.name === $(_this2).data('doctor');
     });
     $('.slider-mobile__mains').slick('slickGoTo', index);
+    $('.certificate-wrapper').click(function () {
+      var _this3 = this;
+
+      var doctor = doctors.find(function (doctor) {
+        return doctor.name === $(_this3).data('doctor');
+      });
+      $('.certificates').html(generateCertificatesHtml(doctor));
+      $('.certificates').css('display', 'block');
+      $('.certificates-back-btn').css('display', 'block');
+      $('.footer').css('display', 'none');
+      $('.certificates__close').click(function () {
+        $('.certificates').css('display', 'none');
+        $('.certificates-back-btn').css('display', 'none');
+        $('.footer').css('display', 'block');
+      });
+    });
     $('.slider-mobile__list').css('display', 'none');
     $('.slider-mobile__mains').css('display', 'block');
     $('h1').html('< ' + $('h1').html());
@@ -1179,12 +1195,12 @@ $(document).ready(function () {
   $('.certificate-wrapper').click(function () {
     $('.certificates').css('display', 'block');
     $('.certificates-back-btn').css('display', 'block');
-    $('.footer').css('background-color', '#fff3e0');
+    $('.footer').css('display', 'none');
   });
   $('.certificates__close').click(function () {
     $('.certificates').css('display', 'none');
     $('.certificates-back-btn').css('display', 'none');
-    $('.footer').css('background-color', '#3b241a');
+    $('.footer').css('display', 'block');
   });
   $('.certificates-back-btn').click(function () {
     window.scrollTo(0);
